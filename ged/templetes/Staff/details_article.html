@@ -1,0 +1,86 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="main_content_iner overly_inner ">
+<div class="container-fluid p-0 ">
+
+<div class="row">
+<div class="col-12">
+<div class="page_title_box d-flex align-items-center justify-content-between">
+<div class="page_title_left">
+<h3 class="f_s_30 f_w_700 dark_text">Article</h3>
+<ol class="breadcrumb page_bradcam mb-0">
+<li class="breadcrumb-item"><a href="javascript:void(0);"> Article</a></li>
+<li class="breadcrumb-item"><a href="javascript:void(0);">Details</a></li>
+</ol>
+ </div>
+<a href="" class="white_btn3">Imprimer</a>
+</div>
+</div>
+</div>
+<div class="row ">
+<div class="col-12 QA_section">
+<div class="card QA_table ">
+    {% for i in article %}
+<div class="card-header">
+
+<strong> {{i.created_at}}</strong>
+<span class="float-end"> <strong></strong> </span>
+</div>
+    {% endfor %}
+<div class="card-body">
+<div class="row mb-4">
+        {% for i in article %}
+<div class="col-sm-6">
+<h6 class="mb-3"></h6>
+<div>
+<strong>Type: {{i.type}} </strong>
+</div>
+<div>CUMP: {{i.cump}}</div>
+<div>Code: {{i.code}}</div>
+<div>Réferance: {{i.reference}}</div>
+<div>Stock :{{i.stock}}</div>
+</div>
+    {% endfor %}
+        {% for i in article %}
+
+<div class="col-sm-6">
+<img class="hover-image" style="width:150px" src="/{{i.parcourrir}}" alt="Article">
+</div>
+        {% endfor %}
+
+</div>
+<div class="table-responsive-sm">
+<table class="table table-striped">
+<thead>
+<tr>
+<th class="center">désignation des produits </th>
+<th>Quantités</th>
+<th>Unités</th>
+<th class="right">Prix Achat</th>
+<th class="center">prix Vente</th>
+<th class="right">prix Unitaire HT</th>
+</tr>
+</thead>
+    {% for i in article %}
+<tbody>
+<tr>
+<td class="center">{{i.designation}}</td>
+<td class="left ">{{i.Quantite}}</td>
+<td class="left strong">{{i.unite_id}}</td>
+<td class="right">{{i.prix_a}}</td>
+<td class="center">{{i.prix_v}}</td>
+<td class="right">{{i.prix_ht}}</td>
+</tr>
+</tbody>
+    {% endfor %}
+</table>
+
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+{% endblock %}

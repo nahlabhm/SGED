@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+  <head>
+<meta charset="UTF-8">
+<title>GED</title>
+<link rel="stylesheet" href="{% static 'css/style.css' %}" />
+  </head>
+   <body>
+<div class="box-form">
+<div class="left">
+<div class="overlay">
+<h1>Bienvenue</h1>
+<p> Application de Gestion Electronique des Documents (GED)</p>
+<span>
+</span>
+</div>
+</div>
+<div class="right">
+<h5>Login</h5>
+<div class="inputs">
+                        {% if messages %}
+                        {% for message in messages %}
+                        {% if message.tags == 'error' %}
+                        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                      {{message}}
+                        <button type="button" class="close" data-bs-dismiss="alert" aria-label="Close">
+                           <span aria-hidden="true">&times;</span>
+                        </button>
+                           </div>
+                        {% endif %}
+                        {% endfor %}
+                        {% endif %}
+                        <form action="{% url 'doLogin' %}" method="post">
+                           {% csrf_token %}
+
+                           <div class="form-group">
+                              <input class="form-control" type="text" placeholder="Email" name="email">
+                           </div>
+                           <div class="form-group">
+                              <input class="form-control" type="password" placeholder="Password" name="password">
+                           </div>
+                            <br>
+                           <div class="form-group">
+                              <button class="btn btn-primary btn-block" type="submit">Login</button>
+                           </div>
+                        </form>
+
+                     </div>
+</div>
+</div>
+
+<script type="text/javascript" async="" src="{% static 'https://www.google-analytics.com/analytics.js' %}"></script><script async="" src="{% static 'https://www.googletagmanager.com/gtag/js?id=UA-80520768-2' %}" type="text/javascript"></script>
+<script type="text/javascript">
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-80520768-2');
+</script>
+
+</body>
+</html>

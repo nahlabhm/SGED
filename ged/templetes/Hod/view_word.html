@@ -1,0 +1,104 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="main_content_iner overly_inner ">
+<div class="container-fluid p-0 ">
+<div class="row">
+<div class="col-12">
+<div class="page_title_box d-flex flex-wrap align-items-center justify-content-between">
+<div class="page_title_left d-flex align-items-center">
+<h3 class="f_s_25 f_w_700 dark_text mr_30">Documents</h3>
+<ol class="breadcrumb page_bradcam mb-0">
+<li class="breadcrumb-item"><a href="javascript:void(0);">document</a></li>
+<li class="breadcrumb-item active">Liste</li>
+</ol>
+</div>
+<div class="page_title_right">
+<div class="page_date_button d-flex align-items-center">
+<img src="img/icon/calender_icon.svg" alt="">
+        <a href="{% url 'add_word' %}" class="action_btn" > <i class="fas fa-plus" ></i> </a>
+
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="row">
+<div class="col-lg-12">
+<div class="white_card card_height_100 mb_30 pt-4">
+<div class="white_card_body">
+<div class="QA_section">
+<div class="white_box_tittle list_header">
+        <form method="get">
+<div class="box_right d-flex lms_block">
+ {{myFilter.form}}
+</div>
+         <br>
+<div class="add_button ms-2">
+<button href="#"  class="btn_1">Filter</button>
+</div>
+        </form>
+</div>
+    <br>
+<div class="QA_table mb_30">
+<table id="table_id" class="table lms_table_active ">
+<thead>
+<tr>
+<th scope="col">id</th>
+<th scope="col">titre</th>
+    <th scope="col">Utilisateur </th>
+    <th scope="col">contenu </th>
+        <th scope="col">Sujets </th>
+    <th scope="col">Description </th>
+    <th scope="col">Nature </th>
+    <th scope="col">created_at</th>
+    <th scope="col">updated_at</th>
+    <th scope="col">Action</th>
+
+</tr>
+</thead>
+<tbody>
+{% for i in word %}
+<tr>
+<th scope="row"> <a href="#" class="question_content"> {{i.id}} </a></th>
+
+<td><a href="student-details.html">{{i.titre}}</a>
+
+<td><a href="student-details.html"> {{user.first_name}}&nbsp;{{user.last_name}}</a>
+                                        </td>
+<td><a download href="{{i.word.url}}"  >{{i.word}}</a></td>
+          <td><a href="#">{{i.sujets}}</a></td>
+      <td><a href="#">{{i.description}}</a></td>
+      <td><a href="#">{{i.nature}}</a></td>
+      <td><a href="#">{{i.created_at}}</a></td>
+      <td><a href="#">{{i.updated_at}}</a></td>
+<td>
+
+<div class="header_more_tool">
+<div class="dropdown">
+<span class="dropdown-toggle" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+<i class="ti-more-alt"></i>
+</span>
+<div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton" x-placement="bottom-end" style="position: absolute; transform: translate3d(-148px, 20px, 0px); top: 0px; left: 0px; will-change: transform;">
+<a class="dropdown-item" href="{% url 'delete_word' i.id %}"> <i class="ti-trash"></i> Supprimer</a>
+<a class="dropdown-item" href="{% url 'edit_word' i.id %}"> <i class="fas fa-edit"></i> Modifier</a>
+<a class="dropdown-item" download href="{{i.word.url}}"  > <i class="fa fa-download"></i> Telecharger</a>
+</div>
+</div>
+</div>
+</td>
+</tr>
+{% endfor %}
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+{% endblock %}

@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<div class="main_content_iner ">
+<div class="container-fluid p-0">
+
+<div class="row">
+<div class="col-12">
+<div class="page_title_box d-flex align-items-center justify-content-between">
+<div class="page_title_left">
+<h3 class="f_s_30 f_w_700 dark_text">Ressources</h3>
+<ol class="breadcrumb page_bradcam mb-0">
+<li class="breadcrumb-item"><a href="javascript:void(0);">ressource </a></li>
+<li class="breadcrumb-item"><a href="javascript:void(0);">Videos</a></li>
+<li class="breadcrumb-item active">Liste</li>
+</ol>
+ </div>
+<a href="{% url 'add_video' %}" class="white_btn3">Ajouter </a>
+</div>
+</div>
+</div>
+</div>
+     <form method="get">
+<div class="box_right d-flex lms_block">
+ {{myFilter.form}}
+</div>
+         <br>
+<div class="add_button ms-2">
+<button href="#"  class="btn_1">Filter</button>
+</div>
+        </form>
+    <br>
+<div class="white_card_body">
+<div class="row justify-content-center">
+{% for i in video %}
+<div class="col-lg-4 col-md-6 mb_30">
+<div class="single_wow_amin wow slideInLeft" data-wow-duration="1s" data-wow-delay=".1s">
+    <div class="header_more_tool">
+<div class="dropdown">
+<span class="dropdown-toggle" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+<i class="ti-more-alt"></i>
+</span>
+<div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton" x-placement="bottom-end" style="position: absolute; transform: translate3d(-148px, 20px, 0px); top: 0px; left: 0px; will-change: transform;">
+<a class="dropdown-item" href="{% url 'delete_video' i.id %}"> <i class="ti-trash"></i> Supprimer</a>
+<a class="dropdown-item" href="{% url 'edit_video' i.id %}"> <i class="fas fa-edit"></i> Modifier</a>
+<a class="dropdown-item" download href="{{i.video.url}}"> <i class="fa fa-download"></i> Telecharger</a>
+</div>
+</div>
+</div>
+<video width="400" height="240" controls>
+  <source src="{{i.video.url}}" type="video/mp4">
+  <source src="movie.ogg" type="video/ogg">
+</video>
+    <h4 class="m-0">{{i.titre}}</h4>
+<h5 class="f_s_16 f_w_500 mb-0">{{i.expire}}</h5>
+<p class="text-muted mb-2">{{i.created_at}}</p>
+    <span class="text-muted fw-bold">{{i.sujets}}</span>
+    <span class="text-muted fw-bold">{{i.description}}</span>
+</div>
+</div>
+{% endfor %}
+</div>
+</div>
+ </div>
+</div>
+</div>
+</div>
+</div>
+
+{% endblock %}

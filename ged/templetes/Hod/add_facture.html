@@ -1,0 +1,195 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="main_content_iner overly_inner ">
+<div class="container-fluid p-0 ">
+
+<div class="row">
+<div class="col-12">
+<div class="page_title_box d-flex flex-wrap align-items-center justify-content-between">
+<div class="page_title_left d-flex align-items-center">
+<h3 class="f_s_25 f_w_700 dark_text mr_30"></h3>
+<ol class="breadcrumb page_bradcam mb-0">
+<li class="breadcrumb-item"><a href="javascript:void(0);">Facture</a></li>
+<li class="breadcrumb-item active">Ajouter</li>
+</ol>
+</div>
+<div class="page_title_right">
+<div class="page_date_button d-flex align-items-center">
+<img src="img/icon/calender_icon.svg" alt="">
+
+</div>
+</div>
+</div>
+</div>
+</div>
+   <div class="row">
+                <div class="col-12">
+<div class="white_card card_height_100 mb_30">
+<div class="white_card_header">
+                        <div class="card-body">
+                           <form method="post" action="{% url 'add_facture' %}" enctype="multipart/form-data">
+                              {% csrf_token %}
+                                 <div class="col-12">
+                                    <h5 class="form-title"><span>Facture fournisseur</span></h5>
+                                 </div>
+
+                                 {% include 'includes/messages.html' %}
+<div class="row">
+<div class="col-lg-4">
+<div class="white_card">
+
+   <div class="card-body">
+
+<div class="white_card_header border_bottom_1px"><h4 class="card-title mb-0">Gestion Facture </h4></div>
+
+<div class="card-body">
+<div class="row mb-3">
+<label class="form-label  col-form-label">Reference n :</label>
+<div class="col-lg-9 col-xl-8"><input class="form-control" type="text" name="reference"/></div>
+</div>
+
+<div class="row mb-3">
+    <label class="form-label col-form-label">Reference Commande</label>
+    <select class="nice_Select2 nice_Select_line wide" name="reception_id" style="display: none;" >
+          {% for i in reception %}
+        <option value="{{i.id}}"> {{i.reference}}</option>
+          {% endfor %}
+    </select>
+</div>
+
+<div class="row mb-3">
+<label class="form-label  col-form-label">Condition de paiement </label>
+<div class="col-lg-9 col-xl-8"><input class="form-control" type="text" name="commane_id "  value="{% for i in reception %} {{i.commande_id.condition}}{% endfor %}"/></div>
+</div>
+<div class="row mb-3">
+<div class="common_input mb_15">
+<label class="common_input mb_15">Date Facture</label>
+<div class="col-xl-5 col-sm-9 common_date_picker">
+<input class="datepicker-here  digits " type="text" name="date_f" data-multiple-dates="3" data-multiple-dates-separator=", " data-language="en" >
+</div>
+</div>
+
+    <div class="row mb-6">
+<div class="common_input mb_15">
+<label class="common_input mb_15">Date d'écheance</label>
+<div class="col-xl-5 col-sm-9 common_date_picker">
+<input class="datepicker-here  digits " type="text" name="date_c" data-multiple-dates="3" data-multiple-dates-separator=", " data-language="en" >
+</div>
+</div>
+    <div class="row mb-3">
+<div class="common_input mb_15">
+       <label>Mode Paiement</label>
+<div class="col-lg-9 col-xl-8"><input class="form-control" type="text" name="commane_id "  value="{% for i in reception %} {{i.commande_id.paiement}}{% endfor %}"/></div>
+
+</div>
+</div>
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+</div>
+    <div class="col-lg-4">
+<div class="white_card">
+
+<div class="card-body">
+<div class="row mb-3">
+<div class="common_input mb_15">
+    <label class="form-label col-xl-3 col-lg-3 col-form-label">article</label>
+    <div class="col-lg-9 col-xl-8"><input class="form-control" type="text" name="commande_id"  value="{% for i in reception %} {{i.commande_id.article_id.designation}}{% endfor %}" /></div>
+
+</div>
+                                </div>
+    <div class="row mb-3">
+<div class="common_input mb_15">
+    <label class="form-label col-xl-3 col-lg-3 col-form-label">Unite</label>
+    <div class="col-lg-9 col-xl-8"><input class="form-control" type="text" name="commande_id"  value="{% for i in reception %} {{i.commande_id.unite_id.name}}{% endfor %}" /></div>
+
+</div>
+                                </div>
+<div class="row mb-3">
+<div class="common_input mb_15">
+<label class="form-label col-xl-3 col-lg-3 col-form-label">Quantité</label>
+<div class="col-lg-9 col-xl-8"><input class="form-control" type="text" name="commande_id"  value="{% for i in reception %} {{i.commande_id.Quantite}}{% endfor %}" /></div>
+</div>
+           </div>
+
+<div class="row mb-3">
+<div class="common_input mb_15">
+<label class="form-label col-xl-3 col-lg-3 col-form-label"> Prix Achat  </label>
+<div class="col-lg-9 col-xl-8"><input class="form-control" type="text" name="commande_id" value="{% for i in reception %} {{i.commande_id.prix_a}}{% endfor %}" /></div>
+</div>
+           </div>
+
+<div class="row mb-3">
+<div class="common_input mb_15">
+<label class="form-label col-xl-3 col-lg-3 col-form-label">Remise% </label>
+<div class="col-lg-9 col-xl-8"><input class="form-control" type="text" name="commande_id"   value="{% for i in reception %} {{i.commande_id.remise}}{% endfor %}" /></div>
+</div>
+           </div>
+
+<div class="row mb-3">
+<div class="common_input mb_15">
+<label class="form-label col-xl-3 col-lg-3 col-form-label">TVA % </label>
+<div class="col-lg-9 col-xl-8"><input class="form-control" type="text" name="commande_id"  value="{% for i in reception %} {{i.commande_id.tva}}{% endfor %}" /></div>
+</div>
+           </div>
+
+<div class="row mb-3">
+<div class="common_input mb_15">
+<label class="form-label col-xl-3 col-lg-3 col-form-label">Montant TTC  </label>
+<div class="col-lg-9 col-xl-8"><input class="form-control" type="text" name="commande_id" value="{% for i in reception %} {{i.commande_id.ttc}}{% endfor %}"  /></div>
+</div>
+           </div>
+
+
+                          </div>
+</div>
+
+<div class="col-12">
+<div class="create_report_btn mt_30 text-center">
+ <button type="submit" class="btn btn-primary"> Ajouter </button>
+     <a type="submit"  href="{% url 'view_facture' %}" class="btn btn-primary">Annuler</a>
+
+</div>
+</div>
+</div>
+</div>
+                           </form>
+
+
+</div>
+</div>
+</div>
+                </div>
+<div class="col-lg-4">
+<div class="white_card">
+<div class="white_card_header border_bottom_1px"><h4 class="card-title mb-0">Resumé Facture</h4></div>
+
+<div class="card-body">
+<div class="accordion" >
+
+         {% for i in reception %}
+         <li> <h6 class="m-0">  Date reception : </h6> {{i.created_at }}
+         <li> <h6 class="m-0"> Fournisseur : </h6> {{i.commande_id.fournisseur_id.name}}
+         <li> <h6 class="m-0">  Date Commande : </h6> {{i.commande_id.created_at }}
+             <li> <h6 class="m-0">Montant TTC  : </h6> {{i.commande_id.ttc }}
+
+
+            {% endfor %}
+</div>
+</div>
+</div>
+</div>
+</div>
+
+                </div>
+      </div>
+</div>
+</div>
+</div>
+</div>
+
+
+{% endblock %}

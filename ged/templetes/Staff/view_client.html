@@ -1,0 +1,104 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="main_content_iner overly_inner ">
+<div class="container-fluid p-0 ">
+<div class="row">
+<div class="col-12">
+<div class="page_title_box d-flex flex-wrap align-items-center justify-content-between">
+<div class="page_title_left d-flex align-items-center">
+<h3 class="f_s_25 f_w_700 dark_text mr_30">Clients</h3>
+<ol class="breadcrumb page_bradcam mb-0">
+<li class="breadcrumb-item"><a href="javascript:void(0);">clients</a></li>
+<li class="breadcrumb-item active">Liste</li>
+</ol>
+</div>
+<div class="page_title_right">
+<div class="page_date_button d-flex align-items-center">
+<img src="img/icon/calender_icon.svg" alt="">
+        <a href="{% url 'add_client' %}" class="action_btn" > <i class="fas fa-plus" ></i> </a>
+       <a href="{% url 'export_excel' %}" class="action_btn" > <i class="fas fa-save" ></i> </a>
+
+
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="row">
+<div class="col-lg-12">
+<div class="white_card card_height_100 mb_30 pt-4">
+<div class="white_card_body">
+<div class="QA_section">
+<div class="white_box_tittle list_header">
+    <form method="get">
+<div class="box_right d-flex lms_block">
+ {{myFilter.form}}
+</div>
+         <br>
+<div class="add_button ms-2">
+<button href="#"  class="btn_1">Filter</button>
+</div>
+        </form>
+    <br>
+</div>
+<div class="QA_table mb_30">
+
+<table id="table_id" class="table lms_table_active ">
+<thead>
+<tr>
+<th scope="col">id</th>
+    <th scope="col">code</th>
+<th scope="col">name</th>
+    <th scope="col">Email </th>
+<th scope="col">telephone</th>
+<th scope="col">code_postal</th>
+<th scope="col">fax</th>
+    <th scope="col">pays</th>
+<th scope="col">ville</th>
+<th scope="col">adresse</th>
+    <th scope="col">created_at</th>
+    <th scope="col">updated_at</th>
+    <th scope="col">Action</th>
+
+</tr>
+</thead>
+<tbody>
+{% for i in client %}
+
+<tr>
+<th scope="row"> <a href="#" class="question_content"> {{i.id}} </a></th>
+<td><a href="student-details.html">{{i.code}}</a>
+
+<td><a href="student-details.html">{{i.name}}</a>
+                                        </td>
+<td><a href="https://demo.dashboardpack.com/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="a8dfc7dac39c9891e8cfc5c9c1c486cbc7c5">{{i.email}}</a></td>
+<td><a href="#" >{{i.telephone}}</a></td>
+<td><a href="#" >{{i.code_postal}}</a></td>
+    <td><a href="#">{{i.fax}}</a></td>
+    <td><a href="#">{{i.pays}}</a></td>
+    <td><a href="#">{{i.ville}}</a></td>
+        <td><a href="#">{{i.adresse}}</a></td>
+
+      <td><a href="#">{{i.created_at}}</a></td>
+      <td><a href="#">{{i.updated_at}}</a></td>
+<td>
+<div  class="action_btns d-flex">
+ <a href="{% url 'edit_client' i.id %}" class="action_btn mr_10"> <i class="far fa-edit"></i> </a>
+<a href="{% url 'delete_client' i.id %}" class="action_btn"> <i class="fas fa-trash"></i> </a>
+
+</div>
+</td>
+</tr>
+{% endfor %}
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+{% endblock %}

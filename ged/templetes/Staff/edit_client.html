@@ -1,0 +1,115 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="main_content_iner overly_inner ">
+<div class="container-fluid p-0 ">
+
+<div class="row">
+<div class="col-12">
+<div class="page_title_box d-flex flex-wrap align-items-center justify-content-between">
+<div class="page_title_left d-flex align-items-center">
+<h3 class="f_s_25 f_w_700 dark_text mr_30"></h3>
+<ol class="breadcrumb page_bradcam mb-0">
+<li class="breadcrumb-item"><a href="javascript:void(0);">Clients</a></li>
+<li class="breadcrumb-item active">Ajouter</li>
+</ol>
+</div>
+<div class="page_title_right">
+<div class="page_date_button d-flex align-items-center">
+<img src="img/icon/calender_icon.svg" alt="">
+
+</div>
+</div>
+</div>
+</div>
+</div>
+  <div class="row">
+                <div class="col-12">
+<div class="white_card card_height_100 mb_30">
+<div class="white_card_header">
+                        <div class="card-body">
+                           <form method="post" action="{% url 'update_client' %}" enctype="multipart/form-data">
+                              {% csrf_token %}
+                                 <div class="col-12">
+                                    <h5 class="form-title"><span>Ajouter Clients</span></h5>
+                                 </div>
+
+                                 {% include 'includes/messages.html' %}
+<div class="white_card_body">
+                                <div class="row">
+
+                <div class="col-lg-6">
+<div class="common_input mb_15">
+    <label>Code</label>
+<input type="text" placeholder="code client" name="code" value="{% for i in client %} {{i.code}}{% endfor %}">
+</div>
+</div>
+            <div class="col-lg-6">
+<div class="common_input mb_15">
+    <label>Nom </label>
+ <input type="text" placeholder="nom client" name="client_id" value="{% for i in client %} {{i.id}}{% endfor %}"  hidden>
+    <input type="text" placeholder="nom client" name="name" value="{% for i in client %} {{i.name}}{% endfor %}">
+</div>
+</div>
+            <div class="col-lg-6">
+<div class="common_input mb_15">
+    <label>Email</label>
+<input type="text" placeholder="Email" name="email" value="{% for i in client %} {{i.email}}{% endfor %}" ></div>
+            </div>
+            <div class="col-lg-6">
+<div class="common_input mb_15">
+     <label> téléphone</label>
+<input type="text" placeholder="téléphone" name="telephone" value="{% for i in client %} {{i.telephone}}{% endfor %}">
+</div>
+</div>
+            <div class="col-lg-6">
+<div class="common_input mb_15">
+   <label> code postal </label>
+<input type="text" placeholder="code postal" name="code_postal" value="{% for i in client %} {{i.code_postal}}{% endfor %}">
+</div>
+</div>
+                            <div class="col-lg-6">
+<div class="common_input mb_15">
+       <label> fax </label>
+<input type="text" placeholder="fax" name="fax" value="{% for i in client %} {{i.fax}}{% endfor %}">
+</div>
+</div>
+                                  <div class="col-lg-6">
+<div class="common_input mb_15">
+    <label> Pays </label>
+<input type="text" placeholder="pays" name="pays" value="{% for i in client %} {{i.pays}}{% endfor %}">
+</div>
+</div>
+<div class="col-lg-6">
+<div class="common_input mb_15">
+    <label> Ville </label>
+<input type="text" placeholder="ville" name="ville" value="{% for i in client %} {{i.ville}}{% endfor %}">
+</div>
+</div>
+    <div class="col-lg-6">
+<div class="common_input mb_15">
+    <label> Adresse </label>
+<input type="text" placeholder="adresse" name="adresse" value="{% for i in client %} {{i.adresse}}{% endfor %}">
+</div>
+</div>
+
+<div class="col-12">
+<div class="create_report_btn mt_30 text-center">
+ <button type="submit" class="btn btn-primary"> Ajouter </button>
+     <a type="submit"  href="{% url 'view_client' %}" class="btn btn-primary">Annuler</a>
+
+</div>
+</div>
+
+
+</div>
+                     </div>
+
+                                    </form>
+                  </div>
+  </div>
+</div>
+</div>
+</div>
+</div>
+</div>
+{% endblock %}

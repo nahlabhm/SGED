@@ -1,0 +1,65 @@
+
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="row">
+                <div class="col-12">
+<div class="white_card card_height_100 mb_30">
+<div class="white_card_header">
+                        <div class="card-body">
+                           <form method="post" action="{% url 'send_fichier' %}" enctype="multipart/form-data">
+                              {% csrf_token %}
+                                 <div class="col-12">
+                                    <h5 class="form-title"><span>send </span></h5>
+                                 </div>
+
+                                 {% include 'includes/messages.html' %}
+
+    <div class="modal-content">
+      <div class="modal-header">
+
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+
+                                  <div class="col-lg-6">
+<div class="common_input mb_15">
+    <label>Email</label>
+<input type="text" placeholder="Email" name="email" required>
+</div>
+</div>
+
+                <div class="col-lg-6">
+<div class="common_input mb_15">
+    <label>Subject</label>
+<input type="text" placeholder="titre" name="subject" >
+</div>
+</div>
+
+            <div class="col-lg-6">
+<div class="common_input mb_15">
+    <label>Message</label>
+    <textarea class="form-control" name="message" ></textarea>
+</div>
+</div>
+              </div>
+
+
+<div class="col-12">
+<div class="create_report_btn mt_30 text-center">
+ <button type="submit" class="btn btn-primary"> Ajouter </button>
+     <a type="submit"  href="{% url 'view_commande' %}" class="btn btn-primary">Annuler</a>
+
+</div>
+</div>
+    </div>
+       </form>
+  </div>
+
+</div>
+</div>
+                </div>
+</div>
+
+
+{% endblock %}

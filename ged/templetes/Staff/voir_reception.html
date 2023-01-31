@@ -1,0 +1,91 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="main_content_iner overly_inner ">
+<div class="container-fluid p-0 ">
+
+<div class="row">
+<div class="col-12">
+<div class="page_title_box d-flex align-items-center justify-content-between">
+<div class="page_title_left">
+<h3 class="f_s_30 f_w_700 dark_text">Reception</h3>
+<ol class="breadcrumb page_bradcam mb-0">
+<li class="breadcrumb-item"><a href="javascript:void(0);"> reception</a></li>
+<li class="breadcrumb-item"><a href="javascript:void(0);">Details</a></li>
+</ol>
+ </div>
+<a href="#" class="white_btn3">Imprimer</a>
+</div>
+</div>
+</div>
+<div class="row ">
+<div class="col-12 QA_section">
+<div class="card QA_table ">
+    {% for i in reception %}
+<div class="card-header">
+
+<strong> {{i.created_at}}</strong>
+<span class="float-end"> <strong></strong> </span>
+</div>
+    {% endfor %}
+<div class="card-body">
+<div class="row mb-4">
+        {% for i in reception %}
+<div class="col-sm-6">
+<h6 class="mb-3"></h6>
+<div>
+<strong>reference: {{i.reference}} </strong>
+</div>
+<div>Reference commande: {{i.commande_id.reference}}</div>
+<div>Date : {{i.date_c}}</div>
+<div>Note: {{i.note}}</div>
+        <div>date commande : {{i.commande_id.date_c}}<div>
+            <div>Fournisseur : {{i.commande_id.fournisseur_id.name}}<div>
+                    <div>Montant TTC : {{i.commande_id.ttc}}<div>
+
+</div>
+    {% endfor %}
+
+
+</div>
+<div class="table-responsive-sm">
+<table class="table table-striped">
+<thead>
+<tr>
+<th class="center">désignation des produits </th>
+<th>Quantités</th>
+<th class="right">Stock</th>
+<th class="center">Reception Actuelle </th>
+
+
+</tr>
+</thead>
+    {% for i in reception %}
+<tbody>
+<tr>
+<td class="center">{{i.commande_id.article_id.designation}}</td>
+<td class="left strong">{{i.commande_id.article_id.Quantite}}</td>
+<td class="right">{{i.commande_id.article_id.stock}}</td>
+<td class="center">{{i.actuelle}}</td>
+
+</tr>
+
+</tbody>
+    {% endfor %}
+</table>
+
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+{% endblock %}

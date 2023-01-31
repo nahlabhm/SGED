@@ -1,0 +1,390 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<div class="main_content_iner overly_inner ">
+<div class="container-fluid p-0 ">
+<div class="row">
+<div class="col-12">
+<div class="page_title_box d-flex flex-wrap align-items-center justify-content-between">
+<div class="page_title_left d-flex align-items-center">
+<h3 class="f_s_25 f_w_700 dark_text mr_30">parcourir</h3>
+<ol class="breadcrumb page_bradcam mb-0">
+
+</ol>
+</div>
+<div class="page_title_right">
+<div class="page_date_button d-flex align-items-center">
+<img src="img/icon/calender_icon.svg" alt="">
+
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="row ">
+<div class="col-xl-8 ">
+<div class="white_card mb_30 card_height_100">
+<div class="white_card_header">
+<div class="row align-items-center justify-content-between flex-wrap">
+<div class="col-lg-4">
+<div class="main-title">
+<h3 class="m-0">Stoke Details</h3>
+</div>
+</div>
+<div class="col-lg-4 text-end d-flex justify-content-end">
+
+</div>
+</div>
+</div>
+<div class="white_card_body">
+<div id="article"></div>
+</div>
+</div>
+</div>
+<div class="col-xl-4 ">
+<div class="white_card card_height_100 mb_30 user_crm_wrapper">
+<div class="row">
+<div class="col-lg-6">
+<div class="single_crm">
+<div class="crm_head d-flex align-items-center justify-content-between">
+<div class="thumb">
+<img src="{% static 'img/crm/customer.svg' %}" alt="">
+</div>
+<i class="fas fa-ellipsis-h f_s_11 white_text"></i>
+</div>
+<div class="crm_body">
+<h4>{{article_count}}</h4>
+<p>Articles</p>
+</div>
+</div>
+</div>
+<div class="col-lg-6">
+<div class="single_crm ">
+<div class="crm_head crm_bg_1 d-flex align-items-center justify-content-between">
+<div class="thumb">
+<img src="{% static 'img/crm/infographic.svg' %}" alt="">
+</div>
+<i class="fas fa-ellipsis-h f_s_11 white_text"></i>
+</div>
+<div class="crm_body">
+<h4>{{fournisseurs_count}}</h4>
+<p>Fournisseurs</p>
+</div>
+</div>
+</div>
+<div class="col-lg-6">
+<div class="single_crm">
+<div class="crm_head crm_bg_2 d-flex align-items-center justify-content-between">
+<div class="thumb">
+<img src="{% static 'img/crm/businessman.svg' %}" alt="">
+</div>
+<i class="fas fa-ellipsis-h f_s_11 white_text"></i>
+</div>
+<div class="crm_body">
+<h4>{{user_count}}</h4>
+<p>UTilisateurs</p>
+</div>
+</div>
+</div>
+<div class="col-lg-6">
+<div class="single_crm">
+<div class="crm_head crm_bg_3 d-flex align-items-center justify-content-between">
+<div class="thumb">
+<img src="{% static 'img/crm/sqr.svg' %}" >
+</div>
+<i class="fas fa-ellipsis-h f_s_11 white_text"></i>
+</div>
+<div class="crm_body">
+<h4>{{client_count}}</h4>
+<p>Client</p>
+</div>
+</div>
+</div>
+</div>
+<div class="crm_reports_bnner">
+<div class="row justify-content-end ">
+<div class="col-lg-6">
+<h4>Notes</h4>
+<p></p>
+<a href="{% url 'view_note' %}">Ajouter Notes <i class="fas fa-arrow-right"></i> </a>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="col-xl-4">
+<div class="white_card card_height_100 mb_30">
+<div class="white_card_header">
+<div class="row align-items-center">
+<div class="col-lg-4">
+<div class="main-title">
+<h3 class="m-0">Utilisateurs</h3>
+</div>
+</div>
+<div class="col-lg-8">
+<div class="row justify-content-end">
+<div class="col-lg-8 d-flex justify-content-end">
+<div class="serach_field-area theme_bg d-flex align-items-center">
+<div class="search_inner">
+<form action="#">
+<div class="search_field">
+<input type="text" placeholder="Search">
+</div>
+<button type="submit" name="q"> <img src="{% static 'img/icon/icon_search.svg' %}" alt=""> </button>
+</form>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="row justify-content-end">
+<div class="col-lg-4 mt_20">
+
+</div>
+</div>
+</div>
+<div class="white_card_body ">
+{% for i in staff %}
+<div class="single_user_pil d-flex align-items-center justify-content-between">
+<div class="user_pils_thumb d-flex align-items-center">
+<div class="thumb_34 mr_15 mt-0"><img class="img-fluid radius_50" src="/{{i.admin.profile_pic}}"  alt=""></div>
+<span class="f_s_14 f_w_400 text_color_11">{{i.admin.first_name}}&nbsp;{{i.admin.last_name}}</span>
+</div>
+
+<div class="user_info">
+ <p>{{i.role}}</p>
+</div>
+
+<div class="action_btns d-flex">
+ <a href="{% url 'edit_user' i.id %}" class="action_btn mr_10"> <i class="far fa-edit"></i> </a>
+<a href="{% url 'delete_user' i.id %}" class="action_btn"> <i class="fas fa-trash"></i> </a>
+</div>
+
+
+</div>
+ {% endfor %}
+</div>
+</div>
+</div>
+<div class="col-xl-4">
+<div class="white_card card_height_100 mb_20 ">
+<div class="white_card_header">
+<div class="box_header m-0">
+<div class="main-title">
+<h3 class="m-0">Liste Articles</h3>
+</div>
+<div class="header_more_tool">
+<div class="dropdown">
+<span class="dropdown-toggle" id="dropdownMenuButton" data-bs-toggle="dropdown">
+<i class="ti-more-alt"></i>
+</span>
+<div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
+<a class="dropdown-item" href="{% url 'view_article' %}"> <i class="ti-eye"></i> Voir</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="white_card_body QA_section">
+<div class="QA_table ">
+
+<table class="table lms_table_active2 p-0">
+<thead>
+<tr>
+<th scope="col"> Code</th>
+<th scope="col">Type</th>
+<th scope="col">Reference</th>
+<th scope="col">Cree</th>
+<th scope="col">Modifier</th>
+</tr>
+</thead>
+<tbody>
+{% for i in article %}
+<tr>
+<td>
+<div class="customer d-flex align-items-center">
+<div class="thumb_34 mr_15 mt-0"><img class="img-fluid radius_50" src="/{{i.parcourrir}}" alt=""></div>
+<span class="f_s_12 f_w_600 color_text_5">{{i.code}}</span>
+</div>
+</td>
+<td class="f_s_12 f_w_400 color_text_6">{{i.type}}</td>
+<td class="f_s_12 f_w_400 color_text_7">{{i.reference}}</td>
+<td class="f_s_12 f_w_400 color_text_6">{{i.created_at}}</td>
+<td class="f_s_12 f_w_400 text-end"><a href="#" class="text_color_1">{{i.updated_at}}</a></td>
+</tr>
+{% endfor %}
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+<div class="col-xl-4">
+<div class="white_card card_height_100 mb_30 overflow_hidden">
+<div class="white_card_header">
+<div class="box_header m-0">
+<div class="main-title">
+<h3 class="m-0">Documents Details</h3>
+</div>
+<div class="header_more_tool">
+
+</div>
+</div>
+</div>
+<div class="white_card_body pb-0">
+<div class="Sales_Details_plan">
+<div class="row">
+<div class="col-lg-6">
+<div class="single_plan d-flex align-items-center justify-content-between">
+<div class="plan_left d-flex align-items-center">
+<div class="thumb">
+<img src="{% static 'img/icon2/3.svg' %}" alt="">
+</div>
+<div>
+<h5>{{image_count}}</h5>
+<span>Images</span>
+</div>
+</div>
+</div>
+ </div>
+<div class="col-lg-6">
+<div class="single_plan d-flex align-items-center justify-content-between">
+<div class="plan_left d-flex align-items-center">
+<div class="thumb">
+<img src="{% static 'img/icon2/1.svg' %}" alt="">
+</div>
+<div>
+<h5>{{video_count}}</h5>
+<span>Videos</span>
+</div>
+</div>
+</div>
+</div>
+<div class="col-lg-6">
+<div class="single_plan d-flex align-items-center justify-content-between">
+<div class="plan_left d-flex align-items-center">
+<div class="thumb">
+<img src="{% static 'img/icon2/4.svg' %}" alt="">
+</div>
+<div>
+<h5>{{pdf_count}}</h5>
+<span>PDF</span>
+</div>
+</div>
+</div>
+</div>
+<div class="col-lg-6">
+<div class="single_plan d-flex align-items-center justify-content-between">
+<div class="plan_left d-flex align-items-center">
+<div class="thumb">
+<img src="{% static 'img/icon2/2.svg' %}" alt="">
+</div>
+<div>
+<h5>{{word_count}}</h5>
+<span>Word</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+
+
+<div class="col-xl-12">
+<div class="white_card card_height_100 mb_30">
+<div class="white_card_header">
+<div class="row align-items-center">
+<div class="col-lg-4">
+<div class="main-title">
+<h3 class="m-0">Ressources</h3>
+</div>
+</div>
+<div class="col-lg-8">
+<div class="row justify-content-end">
+<div class="col-lg-8 d-flex justify-content-end">
+<div class="serach_field-area theme_bg d-flex align-items-center">
+<div class="search_inner">
+<form action="#">
+<div class="search_field">
+<input type="text" placeholder="Search">
+</div>
+<button type="submit" name="q"> <img src="{% static 'img/icon/icon_search.svg'%} " alt=""> </button>
+</form>
+</div>
+</div>
+</div>
+<div class="col-lg-2">
+
+
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="white_card_body ">
+<div class="row min_height_oveflow">
+ {% for i in fichierdoc %}
+<div class="col-lg-4 mb_30">
+<div class="single_user_pil d-flex align-items-center justify-content-between">
+<div class="user_pils_thumb d-flex align-items-center">
+<span class="f_s_14 f_w_400 text_color_11">{{i.titre}}</span>
+</div>
+<div class="user_info">
+{{i.contenu}}
+</div>
+    <div class="header_more_tool">
+<div class="dropdown">
+<span class="dropdown-toggle" id="dropdownMenuButton" data-bs-toggle="dropdown">
+<i class="ti-more-alt"></i>
+</span>
+    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
+<a class="dropdown-item" href="{% url 'voir_fichier' i.id %}"> <i class="ti-eye"></i> Action</a>
+<a class="dropdown-item" href="{% url 'delete_fichier' i.id %}"> <i class="ti-trash"></i> Supprimer</a>
+    </div>
+</div>
+    </div>
+</div>
+ {% endfor %}
+    {% for i in video %}
+<div class="single_user_pil d-flex align-items-center justify-content-between">
+<div class="user_pils_thumb d-flex align-items-center">
+<span class="f_s_14 f_w_400 text_color_11">{{i.titre}}</span>
+</div>
+<div class="user_info">
+{{i.video}}
+</div>
+    <div class="header_more_tool">
+<div class="dropdown">
+<span class="dropdown-toggle" id="dropdownMenuButton" data-bs-toggle="dropdown">
+<i class="ti-more-alt"></i>
+</span>
+ <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
+<a class="dropdown-item" href="{% url 'view_video'  %}"> <i class="ti-eye"></i> Action</a>
+<a class="dropdown-item" href="{% url 'delete_video' i.id %}"> <i class="ti-trash"></i> Spprimer</a>
+    </div>
+</div>
+    </div>
+</div>
+    {% endfor %}
+</div>
+
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+{% endblock %}

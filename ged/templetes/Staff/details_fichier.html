@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="main_content_iner overly_inner ">
+<div class="container-fluid p-0 ">
+
+<div class="row">
+<div class="col-12">
+<div class="page_title_box d-flex align-items-center justify-content-between">
+<div class="page_title_left">
+<h3 class="f_s_30 f_w_700 dark_text">Facture</h3>
+<ol class="breadcrumb page_bradcam mb-0">
+<li class="breadcrumb-item"><a href="javascript:void(0);"> facture</a></li>
+<li class="breadcrumb-item"><a href="javascript:void(0);">Details</a></li>
+</ol>
+ </div>
+<a href="#" class="white_btn3">Imprimer</a>
+</div>
+</div>
+</div>
+<div class="row ">
+<div class="col-12 QA_section">
+<div class="card QA_table ">
+    {% for i in fichierdoc %}
+<div class="card-header">
+
+<strong> {{i.created_at}}</strong>
+<span class="float-end"> <strong></strong> </span>
+</div>
+    {% endfor %}
+<div class="card-body">
+<div class="row lg-9">
+       {% for i in fichierdoc %}
+<div>
+    <div class="col-md-8">
+        <div><strong>Titre: {{i.titre}}</strong></div>
+                <div><strong>Description: {{i.description}}</strong></div>
+        <div><strong>Expire le : {{i.expire}}</strong></div>
+        <div><strong>Nature: {{i.nature}}</strong></div>
+                <div><strong>Sujets: {{i.sujets}}</strong></div>
+
+
+            </div>
+
+        {% endfor %}
+
+</div>
+<div class="table-responsive-sm">
+    <table class="table table-striped">
+      {% for i in fichierdoc %}
+
+<img class="hover-image" style="center" width="700px" height="700px" src="/{{i.contenu}}" alt="Article">
+
+        {% endfor %}
+    </table>
+
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+{% endblock %}

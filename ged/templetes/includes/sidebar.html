@@ -1,0 +1,300 @@
+{% load static %}
+<nav class="sidebar">
+<a class="large_logo" href="{% url 'hod_home' %}"><img src="{% static 'img/ged.png' %}" width="300" height="100" alt=""></a>
+<a class="small_logo" href="index.html"><img src="{% static 'img/mini_logo.png' %}" alt=""></a>
+<div class="sidebar_close_icon d-lg-none">
+<i class="ti-close"></i>
+</div>
+</div>
+ {% if user.user_type == '1' %}
+<ul id="sidebar_menu">
+<li class="">
+<a  href="{% url 'hod_home' %}" aria-expanded="false">
+<div class="nav_icon_small">
+<img src="{% static 'img/menu-icon/dashboard.svg' %}" >
+</div>
+<div class="nav_title">
+<span>Parcourir </span>
+</div>
+</a>
+</li>
+ <li class="">
+<a  href="{% url 'view_user' %}" aria-expanded="false">
+<div class="nav_icon_small">
+<img src="{% static 'img/menu-icon/5.svg' %}" alt="">
+</div>
+<div class="nav_title">
+<span>Utilisateurs</span>
+</div>
+</a>
+
+</li>
+ <li class="">
+<a class="has-arrow" href="#" aria-expanded="false">
+<div class="nav_icon_small">
+<img src="{% static 'img/menu-icon/4.svg' %}" alt="">
+</div>
+<div class="nav_title">
+<span>Client & Fournisseur </span>
+</div>
+</a>
+<ul>
+<li><a href="{% url 'view_client' %}">Client</a></li>
+<li><a href="{% url 'view_fournisseur' %}">Fournisseur</a></li>
+</ul>
+</li>
+<li class="">
+<a class="has-arrow" href="#" aria-expanded="false">
+<div class="nav_icon_small">
+<img src="{% static 'img/menu-icon/3.svg' %}" alt="">
+</div>
+<div class="nav_title">
+<span>Vente Client</span>
+</div>
+</a>
+<ul>
+<li><a href="{% url 'view_devis_v' %}">Devis</a></li>
+
+
+</ul>
+
+
+
+<li class="">
+<a class="has-arrow" href="#" aria-expanded="false">
+<div class="nav_icon_small">
+<img src="{% static 'img/menu-icon/11.svg' %}" alt="">
+</div>
+<div class="nav_title">
+<span>Achat Fournisseur</span>
+</div>
+</a>
+<ul>
+<li><a href="{% url 'view_commande' %}">Commande </a></li>
+<li><a href="{% url 'view_reception' %}">Réception</a></li>
+ <li><a href="{% url 'view_facture' %}">Facture</a></li>
+
+</ul>
+</li>
+<li class="">
+<a  href="{% url 'view_article' %}" aria-expanded="false">
+<div class="nav_icon_small">
+<img src="{% static 'img/menu-icon/13.svg' %}" alt="">
+</div>
+<div class="nav_title">
+<span>Article</span>
+</div>
+</a>
+</li>
+
+ <li class="">
+<a href="{% url 'view_stock' %}" aria-expanded="false">
+<div class="nav_icon_small">
+<img src="{% static 'img/menu-icon/12.svg ' %}" alt="">
+</div>
+<div class="nav_title">
+<span>Stock</span>
+</div>
+</a>
+</li>
+<li class="">
+<a class="has-arrow"  aria-expanded="false">
+<div class="nav_icon_small">
+<img src="{% static 'img/menu-icon/8.svg' %}" alt="">
+</div>
+<div class="nav_title">
+<span> Ressources </span>
+</div>
+</a>
+<ul>
+<li><a href="{% url 'view_fichier' %}">Image</a></li>
+<li><a href="{% url 'view_pdf' %}">Fichier</a></li>
+<li><a href="{% url 'view_video' %}">Video</a></li>
+ <li><a href="{% url 'view_word' %}">Microsoft</a></li>
+  <li><a href="{% url 'view_note' %}">Note</a></li>
+
+
+</ul>
+
+</li>
+
+<li class="">
+<a href="{% url 'calendar' %}" aria-expanded="false">
+<div class="nav_icon_small">
+<img src="{% static 'img/menu-icon/15.svg' %}" alt="">
+</div>
+<div class="nav_title">
+<span>Calander</span>
+</div>
+</a>
+</li>
+<li class="">
+<a  href="{% url 'chartjs' %}" aria-expanded="false">
+<div class="nav_icon_small">
+<img src="{% static 'img/menu-icon/11.svg' %}" alt="">
+</div>
+<div class="nav_title">
+<span>Statistiques</span>
+</div>
+</a>
+</li>
+
+<li class="">
+<a class="" href="{% url 'logout' %}" aria-expanded="false">
+<div class="nav_icon_small">
+<img src="{% static 'img/menu-icon/19.svg' %}" alt="">
+</div>
+<div class="nav_title">
+<span>Logout</span>
+</div>
+</a>
+</li>
+</ul>
+
+
+
+ {% elif user.user_type == '2' %}
+
+ <ul  id="sidebar_menu">
+<li class="">
+<a  href="{% url 'hod_home' %}" aria-expanded="false">
+<div class="nav_icon_small">
+<img src="{% static 'img/menu-icon/dashboard.svg' %}" >
+</div>
+<div class="nav_title"  >
+<span>Parcourir </span>
+</div>
+</a>
+</li>
+ </ul>
+ <li class="">
+<a  href="{% url 'view_user' %}" aria-expanded="false">
+<div class="nav_icon_small">
+<img src="{% static 'img/menu-icon/5.svg' %}" alt="">
+</div>
+<div class="nav_title">
+<span>Utilisateurs</span>
+</div>
+</a>
+
+</li>
+ <li class="">
+<a class="has-arrow" href="#" aria-expanded="false">
+<div class="nav_icon_small">
+<img src="{% static 'img/menu-icon/4.svg' %}" alt="">
+</div>
+<div class="nav_title">
+<span>Client & Fournisseur </span>
+</div>
+</a>
+<ul>
+<li><a href="{% url 'view_client' %}">Client</a></li>
+<li><a href="{% url 'view_fournisseur' %}">Fournisseur</a></li>
+</ul>
+</li>
+<li class="">
+<a class="has-arrow" href="#" aria-expanded="false">
+<div class="nav_icon_small">
+<img src="{% static 'img/menu-icon/3.svg' %}" alt="">
+</div>
+<div class="nav_title">
+<span>Vente Client</span>
+</div>
+</a>
+<ul>
+<li><a href="{% url 'view_devis_v' %}">Devis</a></li>
+</ul>
+<li class="">
+<a class="has-arrow" href="#" aria-expanded="false">
+<div class="nav_icon_small">
+<img src="{% static 'img/menu-icon/11.svg' %}" alt="">
+</div>
+<div class="nav_title">
+<span>Achat Fournisseur</span>
+</div>
+</a>
+<ul>
+<li><a href="{% url 'view_commande' %}">Commande </a></li>
+<li><a href="{% url 'view_reception' %}">Réception</a></li>
+ <li><a href="{% url 'view_facture' %}">Facture</a></li>
+</ul>
+</li>
+<li class="">
+<a  href="{% url 'view_article' %}" aria-expanded="false">
+<div class="nav_icon_small">
+<img src="{% static 'img/menu-icon/13.svg' %}" alt="">
+</div>
+<div class="nav_title">
+<span>Article</span>
+</div>
+</a>
+</li>
+
+ <li class="">
+<a href="{% url 'view_stock' %}" aria-expanded="false">
+<div class="nav_icon_small">
+<img src="{% static 'img/menu-icon/12.svg ' %}" alt="">
+</div>
+<div class="nav_title">
+<span>Stock</span>
+</div>
+</a>
+</li>
+<li class="">
+<a class="has-arrow"  aria-expanded="false">
+<div class="nav_icon_small">
+<img src="{% static 'img/menu-icon/8.svg' %}" alt="">
+</div>
+<div class="nav_title">
+<span> Ressources </span>
+</div>
+</a>
+<ul>
+<li><a href="{% url 'view_fichier' %}">Image</a></li>
+<li><a href="{% url 'view_pdf' %}">Fichier</a></li>
+<li><a href="{% url 'view_video' %}">Video</a></li>
+ <li><a href="{% url 'view_word' %}">Microsoft</a></li>
+  <li><a href="{% url 'view_note' %}">Note</a></li>
+
+
+</ul>
+
+</li>
+
+<li class="">
+<a href="{% url 'calendar' %}" aria-expanded="false">
+<div class="nav_icon_small">
+<img src="{% static 'img/menu-icon/15.svg' %}" alt="">
+</div>
+<div class="nav_title">
+<span>Calander</span>
+</div>
+</a>
+</li>
+<li class="">
+<a  href="{% url 'chartjs' %}" aria-expanded="false">
+<div class="nav_icon_small">
+<img src="{% static 'img/menu-icon/11.svg' %}" alt="">
+</div>
+<div class="nav_title">
+<span>Statistiques</span>
+</div>
+</a>
+</li>
+
+<li class="">
+<a class="" href="{% url 'logout' %}" aria-expanded="false">
+<div class="nav_icon_small">
+<img src="{% static 'img/menu-icon/19.svg' %}" alt="">
+</div>
+<div class="nav_title">
+<span>Logout</span>
+</div>
+</a>
+</li>
+
+</ul>
+ {% else %}
+ {% endif %}
+
+</nav>

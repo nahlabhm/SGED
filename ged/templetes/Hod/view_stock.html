@@ -1,0 +1,82 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="main_content_iner overly_inner ">
+<div class="container-fluid p-0 ">
+<div class="row">
+<div class="col-12">
+<div class="page_title_box d-flex flex-wrap align-items-center justify-content-between">
+<div class="page_title_left d-flex align-items-center">
+<h3 class="f_s_25 f_w_700 dark_text mr_30">Article</h3>
+<ol class="breadcrumb page_bradcam mb-0">
+<li class="breadcrumb-item"><a href="javascript:void(0);">Article</a></li>
+<li class="breadcrumb-item active">Gestion Article</li>
+</ol>
+</div>
+<div class="page_title_right">
+<div class="page_date_button d-flex align-items-center">
+
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="row">
+<div class="col-lg-12">
+<div class="white_card card_height_100 mb_30 pt-4">
+<div class="white_card_body">
+<div class="QA_section">
+<div class="white_box_tittle list_header">
+    <form method="get">
+<div class="box_right d-flex lms_block">
+
+ {{myFilter.form}}
+</div>
+
+<div class="add_button ms-2">
+<button href="#"  class="btn_1">Filter</button>
+</div>
+
+        </form>
+</div>
+<div class="QA_table mb_30">
+
+<table id="table_id" class="table lms_table_active ">
+<thead>
+<tr>
+<th scope="col">id</th>
+<th scope="col">reference</th>
+    <th scope="col">designation </th>
+<th scope="col">code  barre </th>
+<th scope="col">unite</th>
+    <th scope="col">CUMP</th>
+    <th scope="col">Stock</th>
+    <th scope="col">Valeur stock </th>
+</tr>
+</thead>
+<tbody>
+{% for i in article %}
+<tr>
+<th scope="row"> <a href="#" class="question_content"> {{i.id}} </a></th>
+
+<td><a href="student-details.html">{{i.reference}}</a></td>
+<td><a href="https://demo.dashboardpack.com/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="a8dfc7dac39c9891e8cfc5c9c1c486cbc7c5">{{i.designation}}</a></td>
+<td><a href="#" >{{i.code}}</a></td>
+    <td><a href="#">{{i.Quantite}}{{i.unite_id}}</a></td>
+        <td><a href="#">{{i.cump}}</a></td>
+      <td><a href="#">{{i.stock}}</a></td>
+      <td><a href="#">{{i.ttc}}</a></td>
+</tr>
+{% endfor %}
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+{% endblock %}

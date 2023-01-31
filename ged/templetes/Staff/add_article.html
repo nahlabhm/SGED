@@ -1,0 +1,212 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="main_content_iner overly_inner ">
+<div class="container-fluid p-0 ">
+
+<div class="row">
+<div class="col-12">
+<div class="page_title_box d-flex flex-wrap align-items-center justify-content-between">
+<div class="page_title_left d-flex align-items-center">
+<h3 class="f_s_25 f_w_700 dark_text mr_30"></h3>
+<ol class="breadcrumb page_bradcam mb-0">
+<li class="breadcrumb-item"><a href="javascript:void(0);">Article</a></li>
+<li class="breadcrumb-item active">Ajouter</li>
+</ol>
+</div>
+<div class="page_title_right">
+<div class="page_date_button d-flex align-items-center">
+<img src="img/icon/calender_icon.svg" alt="">
+
+</div>
+</div>
+</div>
+</div>
+</div>
+  <div class="row">
+                <div class="col-12">
+<div class="white_card card_height_100 mb_30">
+<div class="white_card_header">
+                        <div class="card-body">
+                           <form method="post" action="{% url 'add_article' %}" enctype="multipart/form-data">
+                              {% csrf_token %}
+                                 <div class="col-12">
+                                    <h5 class="form-title"><span>Article</span></h5>
+                                 </div>
+
+                                 {% include 'includes/messages.html' %}
+
+ <div class="row">
+<div class="col-lg-13">
+<div class="white_card">
+<div class="white_card_header border_bottom_1px"><h4 class="card-title mb-0">Gestion Article</h4></div>
+
+<div class="white_card_body">
+                                <div class="row">
+<div class="col-lg-6">
+<div class="common_input mb_15">
+<label class="form-label col-xl-3 col-lg-3 col-form-label">parcourrir</label>
+<div class="col-lg-9 col-xl-8"><input class="form-control" type="file" name="parcourrir" /></div>
+</div>
+</div>
+                          <div class="col-lg-6">
+<div class="common_input mb_15">
+       <label>type</label>
+<select class="nice_Select2 nice_Select_line wide"  name="type">
+    <option >select type</option>
+<option >service</option>
+<option>scotable</option>
+</select>
+</div>
+</div>
+                   <div class="col-lg-6">
+<div class="common_input mb_15">
+<label class="form-label col-xl-3 col-lg-3 col-form-label">code barre</label>
+<div class="col-lg-9 col-xl-8"><input class="form-control" type="text" name="code" /></div>
+</div>
+                </div>
+
+                <div class="col-lg-6">
+<div class="common_input mb_15">
+<label class="form-label col-xl-3 col-lg-3 col-form-label">Reference</label>
+<div class="col-lg-9 col-xl-8"><input class="form-control" type="text" name="reference" /></div>
+</div>
+                </div>
+               <div class="col-lg-6">
+<div class="common_input mb_15">
+<label class="form-label col-xl-3 col-lg-3 col-form-label">CUMP</label>
+<div class="col-lg-9 col-xl-8"><input class="form-control" type="text" name="cump" /></div>
+</div>
+                </div>
+             <div class="col-lg-6">
+<div class="common_input mb_15">
+<label class="form-label col-xl-3 col-lg-3 col-form-label">Designation</label>
+<div class="col-lg-9 col-xl-8"><input class="form-control" type="text" name="designation" /></div>
+</div>
+             </div>
+                <div class="col-lg-6">
+<button  type="button" class="btn btn-primary rounded-pill mb-3" data-bs-toggle="modal" data-bs-target="#exampleModal"> Ajouter unite</button>
+<div class="common_input mb_15">
+       <label>Unite</label>
+    <select class="nice_Select2 nice_Select_line wide" name="unite_id" style="display: none;" required>
+        <option>Select Unite </option>
+          {% for i in unite %}
+        <option value="{{i.id}}"> {{i.name}}</option>
+          {% endfor %}
+    </select>
+</div>
+</div>
+
+             </div>
+
+                                </div>
+</div>
+
+
+<div class="col-lg-7">
+<div class="white_card">
+<div class="white_card_header border_bottom_1px"><h4 class="card-title mb-0">Conditionnement vente et achat</h4></div>
+
+<div class="card-body">
+<div class="accordion" id="accordionExample">
+<div class="card border mb-1 shadow-none">
+<div class="white_card_header border_bottom_1px custom-accordion" id="headingOne">
+<div class="col-lg-6">
+<div class="common_input mb_15">
+    <select class="nice_Select2 nice_Select_line wide" name="unite_id" style="display: none;" required>
+        <option>Select Unite </option>
+          {% for i in unite %}
+        <option value="{{i.id}}"> {{i.name}}</option>
+          {% endfor %}
+    </select>
+</div>
+</div>
+
+
+           <div class="col-lg-6">
+<div class="common_input mb_15">
+<label class="form-label col-xl-3 col-lg-3 col-form-label">Quantite</label>
+<div class="col-lg-9 col-xl-8"><input class="form-control" type="text" name="Quantite" /></div>
+</div>
+           </div>
+
+           <div class="col-lg-6">
+<div class="common_input mb_15">
+<label class="form-label col-xl-3 col-lg-3 col-form-label">prix_a</label>
+<div class="col-lg-9 col-xl-8"><input class="form-control" type="text" name="prix_a" /></div>
+</div>
+           </div>
+
+           <div class="col-lg-6">
+<div class="common_input mb_15">
+<label class="form-label col-xl-3 col-lg-3 col-form-label">prix_v</label>
+<div class="col-lg-9 col-xl-8"><input class="form-control" type="text" name="prix_v" /></div>
+</div>
+           </div>
+
+</div>
+</div>
+
+</div>
+
+</div>
+
+</div>
+<div class="col-12">
+<div class="create_report_btn mt_30 text-center">
+ <button type="submit" class="btn btn-primary"> Ajouter </button>
+     <a type="submit"  href="{% url 'view_article' %}" class="btn btn-primary">Annuler</a>
+
+</div>
+</div>
+</div>
+
+
+ </div>
+</div>
+                                 </form>
+ </div>
+
+ </div>
+
+
+ </div>
+
+
+                        </div>
+</div>
+</div>
+                </div>
+  </div>
+</div>
+</div>
+
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+                                   <form method="post" action="{% url 'add_unite' %}" enctype="multipart/form-data">
+                                       {% csrf_token %}
+
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Ajouter unite</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Annuler"></button>
+      </div>
+      <div class="modal-body">
+    <div class="col-lg-6">
+<div class="common_input mb_15">
+    <label>Titre</label>
+<input type="text" placeholder="titre" name="name" >
+</div>
+</div>
+      </div>
+      <div class="modal-footer">
+           <button type="submit" class="btn btn-primary"> Ajouter </button>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+      </div>
+                                   </form>
+    </div>
+
+  </div>
+</div>
+{% endblock %}
+

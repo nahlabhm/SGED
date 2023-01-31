@@ -1,0 +1,170 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="main_content_iner overly_inner ">
+<div class="container-fluid p-0 ">
+
+<div class="row">
+<div class="col-12">
+<div class="page_title_box d-flex flex-wrap align-items-center justify-content-between">
+<div class="page_title_left d-flex align-items-center">
+<h3 class="f_s_25 f_w_700 dark_text mr_30"></h3>
+<ol class="breadcrumb page_bradcam mb-0">
+<li class="breadcrumb-item"><a href="javascript:void(0);">Paiement</a></li>
+<li class="breadcrumb-item active">Ajouter</li>
+</ol>
+</div>
+<div class="page_title_right">
+<div class="page_date_button d-flex align-items-center">
+<img src="img/icon/calender_icon.svg" alt="">
+
+</div>
+</div>
+</div>
+</div>
+</div>
+   <div class="row">
+                <div class="col-12">
+<div class="white_card card_height_100 mb_30">
+<div class="white_card_header">
+                        <div class="card-body">
+                           <form method="post" action="{% url 'add_paiement' %}" enctype="multipart/form-data">
+                              {% csrf_token %}
+                                 <div class="col-12">
+                                 </div>
+
+                                 {% include 'includes/messages.html' %}
+<div class="row">
+<div class="col-lg-4">
+<div class="white_card">
+
+   <div class="card-body">
+
+<div class="white_card_header border_bottom_1px"><h4 class="card-title mb-0">Gestion Paiement </h4></div>
+
+<div class="card-body">
+
+<div class="row mb-3">
+<label class="form-label  col-form-label">Reference n :</label>
+<div class="col-lg-9 col-xl-8"><input class="form-control" type="text" name="reference"/></div>
+</div>
+
+
+<div class="row mb-3">
+<div class="common_input mb_15">
+<label class="common_input mb_15">Date paiement</label>
+<div class="col-xl-5 col-sm-9 common_date_picker">
+<input class="datepicker-here  digits " type="text" name="date_f" data-multiple-dates="3" data-multiple-dates-separator=", " data-language="en" >
+</div>
+</div>
+
+    <div class="row mb-3">
+<div class="common_input mb_15">
+       <label>Montant</label>
+<div class="col-lg-9 col-xl-8"><input class="form-control" type="text" name="montant " /></div>
+
+</div>
+</div>
+                                                 <div class="col-lg-6">
+<div class="common_input mb_15">
+      <label> Note </label>
+    <textarea class="form-control" name="note" ></textarea>
+
+</div>
+
+</div>
+    <div class="col-12">
+<div class="create_report_btn mt_30 text-center">
+ <button type="submit" class="btn btn-primary"> Ajouter </button>
+     <a type="submit"   class="btn btn-primary">Annuler</a>
+
+</div>
+</div>
+</div>
+</div>
+   </div>
+</div>
+</div>
+</div>
+
+<div class="col-lg-4">
+<div class="white_card">
+<div class="white_card_header border_bottom_1px"><h4 class="card-title mb-0">Paiement Fournisseur</h4></div>
+
+<div class="card-body">
+<div class="row mb-3">
+
+
+         {% for i in facture %}
+    <div> Date reception :  {{i.reception_id.created_at }}</div>
+    <div> Date Commande :  {{i.reception_id.commande_id.created_at}}</div>
+    <div>  Reference Commande :  {{i.reception_id.commande_id.reference }}</div>
+    <div>   reference Reception  : {{i.reception_id.reference }}</div>
+    <div>Montant commande  :  {{i.reception_id.commande_id.ttc }}</div>
+       <div> Montant Reception  :  {{i.reception_id.commande_id.ttc }}</div>
+
+
+
+
+            {% endfor %}
+
+                          </div>
+
+</div>
+</div>
+</div>
+
+    <div class="col-lg-4">
+<div class="white_card">
+<div class="white_card_header border_bottom_1px"><h4 class="card-title mb-0">Resumé de la facture</h4></div>
+
+<div class="card-body">
+<div class="accordion" id="accordionExample">
+<div class="card border mb-1 shadow-none">
+
+</div>
+<div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample" style="">
+<div class="card-body">
+<div class="row">
+ <div class="col-md-12">
+<div class="mb-3">
+
+
+         {% for i in facture %}
+    <div> Fournisseur :  {{i.reception_id.commande_id.fournisseur_id.name }}</div>
+    <div> Date Facture :  {{i.created_at }}</div>
+    <div>  Date d'échéance ::  {{i.date_e }}</div>
+    <div>   Montant facture  : {{i.reception_id.commande_id.ttc }}</div>
+    <div>Montant Payé  :  {{i.reception_id.commande_id.ttc }}</div>
+       <div> Montant restant  :  {{i.reception_id.commande_id.ttc }}</div>
+
+
+
+
+            {% endfor %}
+
+                          </div>
+
+</div>
+</div>
+</div>
+
+</div>
+
+</div>
+                </div>
+</div>
+
+</div>
+                           </form>
+                </div>
+
+      </div>
+
+                        </div></div>
+</div>
+</div>
+</div>
+
+
+
+{% endblock %}
